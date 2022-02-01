@@ -1,0 +1,21 @@
+//This sequence is applied for the whole map
+
+int i;
+ObjList Q9,Q10;
+
+while(1)
+{
+	Q9 = ClassPlayerObjs("Unit", 1).GetObjList();
+	Q9.AddToGroup("RemoveFeedingStatus");
+	
+	Q9 = RemoveFeedingStatus.GetObjList();
+	Q10 = RemoveFeedingStatus_Delete.GetObjList();
+	i  = Q10.count;
+
+for ( i ; i < Q9.count ; i+=1 )
+	{
+	Q9[i].AsUnit().SetFeeding (false);
+	Q9[i].AsUnit().AddToGroup("RemoveFeedingStatus_Delete");
+	}
+	Sleep (300);
+}
