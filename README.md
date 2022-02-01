@@ -8,3 +8,4 @@ Nemesis of the Roman Empire II &amp; III C++ codes for bonuses/effects
 <br>5.Some itmes have to be marked as ***NOT IMPORTANT***.</br>
 <br>6.Whenever is used ***ClassPlayerAreaObjs*** in a sequence, make sure you have created the spesific **area in desired for you** location.</br>
 <br>7.Simply copy-paste the scripts</br>
+<br>8.The **mutation** code works only for ***Imperium III - Great Battles of Rome***</br>
