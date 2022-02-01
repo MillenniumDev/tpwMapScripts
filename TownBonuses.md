@@ -1,5 +1,6 @@
 //Set the selected settlement's Script name to AIStart
 //Set the selected settlement's name (NOT THE DISPLAY) to S_AI1Town
+//Set Autorun allowed to positive
 
 //AIStart(1, "CHAOTIC", 2);
 /*
