@@ -1,0 +1,63 @@
+//ENABLE AUTORUN
+
+int i;
+ObjList Q4,Q5;
+
+while(1)
+{
+	Q4 = ClassPlayerAreaObjs("Unit", 1, "MutationArea").GetObjList();
+	
+
+	Q4.AddToGroup("Mutated");
+	
+	Q4 = Mutated.GetObjList();
+	Q5 = Mutated_Remove.GetObjList();
+	i  = Q5.count;
+
+for ( i ; i < Q4.count ; i+=1 )
+	{
+
+//		Stop Mutation
+
+//	Q4[i].AsUnit().Mutate("GTridentWarrior");
+//	Q4[i].AsUnit().Mutate("BVikingLord");
+//	Q4[i].AsUnit().Mutate("RLiberatus");
+//	Q4[i].AsUnit().Mutate("RPraetorian");
+//	Q4[i].AsUnit().Mutate("RTribune");
+		
+	//Check if is Hero
+	if (Q4[i].AsHero().IsValid)
+	{
+	Q4[i].AsUnit().AddToGroup("Mutated_Remove");
+  Sleep(100);
+	continue;		
+	}
+
+//    Give unit to an ally if you want
+//		Q4[i].AsUnit().SetPlayer(5);
+
+//		End of Stop Mutation
+		
+	Q4[i].AsUnit().SetFreedom(false);
+  Q4[i].AsUnit().Mutate("RLiberatus");
+  
+//  Increase stats if you want
+//	Q4[i].AsUnit().AddBonus(4,4,4,0,0);
+
+//	AddItem if you want
+
+//	Q4[i].AsUnit().AddItem("Veteran Guild");
+
+//	Q4[i].AsUnit().AddItem ("--Feather amulet--");
+//	Q4[i].AsUnit().AddItem("Belt of snakes");
+
+
+//  End of AddItem
+	
+	Q4[i].AsUnit().AddToGroup("Mutated_Remove");
+	Sleep(100);
+	}
+
+
+//	RunSequence("AddBonus_HerbAmuletOfLuck");
+}
