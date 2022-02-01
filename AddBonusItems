@@ -1,0 +1,28 @@
+int i;
+ObjList Q6,Q7;
+
+while(1)
+{
+	Q6 = ClassPlayerAreaObjs("Military", 1, "MagicalCircle").GetObjList();
+	Q6.AddToGroup("ToBeRemoved");
+	
+	Q6 = ToBeRemoved.GetObjList();
+	Q7 = ToBeRemoved_Remove.GetObjList();
+	i  = Q7.count;
+
+for ( i ; i < Q6.count ; i+=1 )
+	{
+
+//	AddItem
+	if (!Q6[i].AsHero().IsValid && !Q6[i].HasItem("Battle Drums of Rage"))
+{
+	Q6[i].AsUnit().AddItem ("Legion's mark");
+	Q6[i].AsUnit().AddItem ("Battle Drums of Rage");
+}
+
+//	End of AddItem
+	
+Q6[i].AsUnit().AddToGroup("ToBeRemoved_Remove");
+	}
+	Sleep (300);
+}
