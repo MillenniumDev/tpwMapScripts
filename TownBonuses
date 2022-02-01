@@ -61,6 +61,8 @@ AI1Town.obj.AsBuilding.Research("Gambler's Test");
 AI1Town.obj.AsBuilding.Research("Gambler's Luck");
 AI1Town.obj.AsBuilding.Research("Housing");
 AI1Town.obj.AsBuilding.Research("Learning");
+AI1Town.obj.AsBuilding.Research("Roman Horseman");
+AI1Town.obj.AsBuilding.Research("Horseshoes");
 
 while(1)
 {
