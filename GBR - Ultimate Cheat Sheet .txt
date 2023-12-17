@@ -1,0 +1,544 @@
+/*
+ README
+ This cheatsheet is a combination of data and commands, that can be
+ executed via both Chat windows or as a code in scenario (using the built-in editor).
+ 
+ For questions contact me.
+
+___________________
+#### Buildings ####
+___________________
+selb.Damage(5000)
+
+_____________________
+#### Settlements ####
+_____________________
+
+Instead of sels, can be used the following reference: selo.AsSettlement()
+    sels.SetGold(1000000)
+    sels.SetFood(1000000)
+    sels.AddToPopulation(100000)
+    sels.AddToMaxPopulation(100000)
+
+Train military units with no cooldown
+    EnvWriteInt(sels,"BarrackTrainTimeDecrease",100)
+
+Research
+    S1.obj.AsBuilding.Research("Barrack Level 3");
+    sels.Research("Nobility")
+
+_______________
+#### Units ####
+_______________
+Kill all selected units
+    if (!IsMultiplayer()) {int i; for (i = _GetSelection().count() - 1; i >= 0; i = i - 1) _GetSelection()[i].AsUnit().Damage(100000);}
+
+Set level of selected units to 36
+    if (!IsMultiplayer()) {int i; for (i = _GetSelection().count() - 1; i >= 0; i = i - 1) _GetSelection()[i].AsUnit().SetLevel(36);}
+
+Set Add Special skill of selected units
+    if (!IsMultiplayer()) {int i; for (i = _GetSelection().count() - 1; i >= 0; i = i - 1) _GetSelection()[i].AsUnit().SetSpecial(8, true);}
+
+Mutate / swap units with another class
+    if (!IsMultiplayer()) {int i; for (i = _GetSelection().count() - 1; i >= 0; i = i - 1) _GetSelection()[i].AsUnit().Mutate("RLiberatus");}
+
+Set food of given Unit
+    selu.SetFood(999)
+
+Set Unit's level
+    selu.SetLevel(99)
+
+AddItem
+    selu.AddItem("Veteran Guild")
+
+Create effect/feedback of timie 900000000
+    CreateFeedback('Frenzy', selu.AsUnit,900000000)
+
+________________
+#### Heroes ####
+________________
+Set level of selected Hero's units to 36
+    if (!IsMultiplayer()) {int i; for (i = selu.AsHero().army.count() - 1; i >= 0; i = i - 1) selu.AsHero().army[i].AsUnit().SetLevel(36);}
+
+Mutate hero's units to mountaineers, set their level to highest so far, and remove feeding status. Also remove freedom status and add toughness special skill
+    {int i = selu.AsHero().army.count() - 1; for (i; i >= 0; i = i - 1){ selu.AsHero().army[i].AsUnit().Mutate("IMountaineer"); selu.AsHero().army[i].AsUnit().SetLevel(EnvReadInt(1,"BestMountaineerLevel")); selu.AsHero().army[i].AsUnit().SetFeeding(false); selu.AsHero().army[i].AsUnit().SetSpecial(9,true);  selu.AsHero().army[i].AsUnit().SetSpecial(30,false);} }
+
+Mutate hero's units to viking lords, remove freedom status, add toughness and ferocity skills and set level to 25.
+    {int i; Unit u; for (i = selu.AsHero().army.count() - 1;  i >= 0; i = i - 1){u = selu.AsHero().army[i].AsUnit() ;  u.Mutate("BVikingLord"); u.SetLevel(25); u.SetSpecial(9,true);  u.SetSpecial(2,true); u.AsUnit().SetSpecial(30,false);} }
+
+Allow autocast
+    selh.SetAutocast(true)
+________________
+#### Wagons ####
+________________
+selo.AsWagon().SetFood(1000)
+selo.AsWagon().LoadGold(5000)
+selo.AsWagon().LoadFood(5000)
+
+_____________________
+#### Environment ####
+_____________________
+
+Shows the whole map as if it is already explored.
+    ExploreAll
+
+Toggles the map fog.
+    ToggleFog
+
+Starts a mini map.
+    MiniMap
+
+Overwrite global variable for player 1 to value 28
+    EnvWriteInt(1,"BestMountaineerLevel",28)
+
+Read global env value BestMountaineerLevel for player 1
+    EnvReadInt(1,"BestMountaineerLevel")
+ Activate effect
+TODO::test
+
+________________________
+#### List of Heroes ####
+________________________
+BHero1
+BHero1a
+BHero1b
+BHero1c
+BHero2
+BHero2a
+BHero2b
+BHero2c
+BHero3
+BHero3a
+BHero3b
+BHero3c
+BritonHero
+Caesar
+CarthaginianHero
+CHero1
+CHero1a
+CHero1b
+CHero1c
+CHero2
+CHero2a
+CHero2b
+CHero2c
+CHero3
+CHero3a
+CHero3b
+CHero3c
+CHero4
+EgyptianHero
+EHero1
+EHero1a
+EHero1b
+EHero1c
+EHero2
+EHero2a
+EHero2b
+EHero2c
+EHero3
+EHero3a
+EHero3b
+EHero3c
+GaulHero
+GermanHero
+GHero1
+GHero1a
+GHero1b
+GHero2
+GHero2a
+GHero2b
+GHero3
+GHero3a
+GHero3b
+GHero4
+GHero4a
+GHero4b
+GHero5
+GHero6
+GHero7
+GHeroWoman
+Hero
+HeroFootman
+HeroMounted
+IberianHero
+IHero1
+IHero1a
+IHero1b
+IHero1c
+IHero2
+IHero2a
+IHero2b
+IHero2c
+IHero3
+IHero3a
+IHero3b
+IHero3c
+IHero4
+ImperialRomanHero
+Keltill
+Larax
+MHero1
+MHero1a
+MHero1b
+MHero1c
+MHero2
+MHero2a
+MHero2b
+MHero2c
+MHero3
+MHero3a
+MHero3b
+MHero3c
+MHero4
+NHero1
+RepublicanRomanHero
+RHero1
+RHero1a
+RHero1b
+RHero1c
+RHero2
+RHero2a
+RHero2b
+RHero2c
+RHero3
+RHero3a
+RHero3b
+RHero3c
+RHero4
+THero1
+THero1a
+THero1b
+THero1c
+THero2
+THero2a
+THero2b
+THero2c
+THero3
+THero3a
+THero3b
+THero3c
+
+_______________________
+#### List of Units ####
+_______________________
+BBowman
+BBronzeSpearman
+BCatapultUnit
+BHighlandar
+BHighlander
+BJavelineer
+BSentry
+BShieldBearer
+BSwordsman
+BVikingLord
+BVillager
+BVillagerAmbient
+BWVillager
+BWVillagerAmbient
+CBerberAssassin
+CJavelinThrower
+CLibyanFootman
+CMaceman
+CMacemen
+CNoble
+CNumidianRider
+CSentry
+CVillager
+CVillagerAmbient
+CWarElephant
+CWVillager
+CWVillagerAmbient
+EAnubisWarrior
+EArcher
+EAxetrower
+EChariot
+EGuardian
+EHorusWarrior
+ESentry
+ESwordsman
+EVillager
+EVillagerAmbient
+EWVillager
+EWVillagerAmbient
+GArcher
+GAxeman
+GHorseman
+GSentry
+GSpearman
+GSwordsman
+GTridentWarriar
+GTridentWarrior
+GVillager
+GVillagerAmbient
+GWomanWarrior
+GWVillager
+GWVillagerAmbient
+IArcher
+ICavalry
+IDefendar
+IDefender
+IEliteGuard
+IMilitiaman
+IMountaineer
+IScout
+ISentry
+ISlinger
+IVillager
+IVillagerAmbient
+IWVillager
+IWVillagerAmbient
+MSentry
+MVillagerAmbient
+MWVillagerAmbient
+OldManA
+OldManE
+RArcher
+RChariot
+RGladiator
+RHastatus
+RLiberatas
+RLiberatus
+RPraetorian
+RPrinciple
+RScout
+RSentry
+RTribune
+RVelit
+RVillager
+RVillagerAmbient
+RWVillager
+RWVillagerAmbient
+TArcher
+TAxeman
+TCatapultUnit
+THuntress
+TMaceman
+TSentry
+TSwordsman
+TTeutonArcher
+TTeutonRider
+TTeutonWolf
+TValkyria
+TValkyrie
+TVillager
+TVillagerAmbient
+TWVillager
+TWVillagerAmbient
+
+_______________________________
+#### List of Unit Specials ####
+_______________________________
+ selu.SetSpecial(int_id, bool)
+ selu.SetSpecial(1, true)
+ selu.SetSpecial(2, false)
+
+
+0  Parry - When activated the warrior does not deal damage but gains 1 stamina instead. Enemy attacks are deflected for 1 stamina each
+1  Drain - Reduces the enemy's stamina by 2 each time the warriors hits
+2  Ferocity - The warrior fully restores his stamina upon killing an enemy
+3  Triple strike - The warrior triples his damage
+4  Deflection - Avoids enemy attacks
+5  Active	- The warrior restores stamina twice as fast
+6  Life steal - Increases the warrior's health by the amount of damage he inflicts
+7  Determination - Increases the warrior's stamina by 1 each time an enemy hits him
+8  Combat skill - Each time the warrior damages an enemy he receives 1 stamina point
+9  Toughness - The warrior's health increases by 5 points per level
+10 Offensive tactics - Adds the warrior's level to his damage
+11 Defensive tactics - Adds the warrior's level to his armor
+12 Penetration - The warrior ignores the enemy armor and Deflection special
+13 Spike armor - Returns the melee damage to the attacker
+14 Bleeding attack - The enemy attacked by the warrior loses 10% of his health in addition to the inflicted damage (does not work on heroes)
+15 Attack skill - Increases the warrior's damage by twice his current stamina
+16 Defense skill - Increases the warrior's armor by twice his current stamina
+17 Death blow - Kills the target if it has 50% or less health left after the damage is applied (does not work on heroes)
+18 Power strike - Kills the target with one strike if the target is damaged and its maximum health is twice less than that of the warrior (does not work on heroes
+19 Expertise - Instantly kills an enemy when the warrior damage is increased after adjustments with enemy armor and level modifier (does not work on heroes)
+20 Charge - The warrior deals 6 times his normal damage (after enemy armor is applied). The time since the warrior's last attack must be at least 5 seconds)
+21 Regeneration - The warrior restores 20 health every 5 seconds
+22 Rage - Increases the warrior's damage by the amount of health he has above 50%. That health, however, is lost after the attack (does not work against heroes)
+23 Revenge - When the warrior is killed by an enemy in melee, that enemy suffers 100 damage
+24 Triumph - The warrior gets healed upon killing an enemy
+25 Disease attack - The warrior infects his target with a disease upon dealing damage
+26 Sneak - The warrior becomes hidden if he remains idle for 20 sec
+27 Invisibility - Hides the target from the eyes of all enemies
+28 Learning - The warrior receives 1 experience when attacking a more experienced enemy
+29 Teaching - Gives 1 experience to an ally
+30 Freedom - The warrior cannot be attached to a hero
+31 Cripple - The target loses all of its stamina
+32 Healing - Heals the target with 20 plus the level of the healer
+33 Keen sight - Reveals all hidden enemies in sight
+34 Trample - Inflicts damage to all surrounding enemies
+35 Curse - Curses the warrior to miss his next attack
+
+_____________________________
+#### List of Hero skills ####
+_____________________________
+ selh.SetSkill(int_id,int_level)
+ selo.AsHero().SetSkill(1,10)
+selh.SetSkill((selh.GetSkill(5)),10)	- set Administration to 10 (for RHeroes)
+ selh._EnableAllSkills - Enables All Heroes skills
+
+0  Administration
+1  Team Attack
+2  Team Defense
+3  Quick March
+4  Epic Endurance
+5  Discipline
+6  Leadership
+7  Epic Attack
+8  Battle Cry	- active
+9  Healing	- active
+10 Ceasefire	- active
+11 Vigor 	- more stamina while eating
+12 Frenzy	- active
+13 Rush		- active
+14 Egoism
+15 Wisdom
+16 Recovery	- more health while eating
+17 Survival	- reduce need of food
+18 Charge	- active - increase stamina of all wariors
+19 Scout	- increase hero's sight
+20 Assault(cry)	- active - ignore enemy armor
+21 Epic Armor
+22 Concealment	- chance for evading an enemy attack
+23 Defensive Cry- active
+24 Euphoria	- chance for stamina regen upon killing an enemy
+
+/*
+Set to -1 to delete it
+*/
+
+_______________________________________
+#### List of Settlement Researches ####
+_______________________________________
+Attack focus
+Battle tactics
+Belts of Might
+BNobility
+BTribute
+CTribute
+Cult of Anubis
+Cult of Horus
+ETribute
+Food Tax
+Free Beer
+Free Drinks
+Free Trade
+Free Wine
+Gambler's Day
+Gambler's Luck
+Gambler's Test
+Gambling
+Gaul Training 1
+Gaul Training 2
+Gaul Training 3
+GrainTrade
+GTribute
+Heroes' Wisdom
+Housing
+Import horses
+ITribute
+Learning
+Legendary Valkyries
+Liberati guild
+Light of Horus I
+Light of Horus II
+Light of Horus III
+Mercenary pact
+MGladiator Shows
+Military Academy
+Mountain Clan
+Mountain Clan Legacy
+MTribute
+Nobility
+Noble Defence
+Noble Offence
+Nordic trade routes
+Path of the dead I
+Path of the dead II
+Path of the dead III
+People's Assembly
+ReligiousFeast
+RGladiator Shows
+RNobility
+Rome Training 1
+Rome Training 2
+RTribute
+Shared Strength
+Shared Triumph
+Slavery
+Standartization I
+Standartization II
+Standartization III
+Statue of Amon-Ra
+Statue of Isis, mother of Anubis
+Statue of Osiris, father of Horus
+Teuton Master
+TFoodTax
+TGrainTrade
+Tournaments
+TReligiousFeast
+TTribute
+Veteran Defence
+Veteran Health
+Veteran Offence
+Warriors' Wisdom
+
+
+___________________________________________________
+#### List of Effects / Feedbacks               ####
+___________________________________________________
+AdditionalDefense
+Assault
+Assault2
+BattleCry
+BattleCry2
+BleedingAttack
+Ceasefire
+Ceasefire2
+CGule_explosion
+CGule_fire
+Charge
+Curse
+Damage1
+Damage2
+Death
+Death_Magic
+Death_Magic2
+DefensiveCry
+DefensiveCry2
+DefensiveStand
+Deflection
+Disease
+Disease2
+Exclamation_Mark
+Experience
+Frenzy
+Frenzy2
+GetItem
+Gule_explosion
+Gule_fire
+Heal
+IGule_explosion
+IGule_fire
+Invisibility
+Lightning
+Lightning2
+Lightning3
+OffensiveTactics
+Parry
+Penetration
+Rage
+Revenge
+SpikedArmor
+StaminaBoost
+StaminaLoss
+TripleStrike
+Watersteps
+
+_____________________________
+#### Other               ####
+_____________________________
+DumpFuncToXML
+    Lists all script functions in a XML file.
