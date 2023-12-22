@@ -5,11 +5,29 @@
  
  For questions contact me.
 
+____________
+#### AI ####
+____________
+Start AI for given player 1 (works for human players too), using DEFAULT type with level 2
+ AIStart( 1 , "DEFAULT" , 2 );
+
+Types:
+ "DEFAULT"
+ "DEFENSIVE"
+ "CHAOTIC"
+Levels:
+ 0
+ 1
+ 2
+
 ___________________
 #### Buildings ####
 ___________________
 selb.Damage(5000)
 
+Research
+    S1.obj.AsBuilding.Research("Barrack Level 3");
+    selb.Research("Nobility")
 _____________________
 #### Settlements ####
 _____________________
@@ -22,10 +40,6 @@ Instead of sels, can be used the following reference: selo.AsSettlement()
 
 Train military units with no cooldown
     EnvWriteInt(sels,"BarrackTrainTimeDecrease",100)
-
-Research
-    S1.obj.AsBuilding.Research("Barrack Level 3");
-    sels.Research("Nobility")
 
 _______________
 #### Units ####
